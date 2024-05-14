@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const App = () => {
+  const [currentTask, setCurrentTask] = useState("");
   const [tasks, setTasks] = useState([
     { task: "Task 1", selected: false },
     { task: "Snorkelling", selected: false },
@@ -22,13 +23,29 @@ const App = () => {
     setTasks(tasks.filter(item => !item.selected));
   };
 
+  const cancelSelected = () => {
+    setTasks(tasks.map(item => { item.task = item.task, selected = false }));
+  };
+
+  const addTask = (currentTask) => {
+    if (currentTask.trim() !== "") {
+      setTasks([...tasks, { task: currentTask, selected: false }]);
+      setCurrentTask(""); // Optional: Clear the input field after adding a task
+    }
+  };
+
 
   return (
     <div>
       Taskify
       <div>
-        <input type="text" placeholder="Enter Task" />
-        <button>Add</button>
+        <input
+          type="text"
+          placeholder="Enter Task"
+          value={currentTask}
+          onChange={(event) => setCurrentTask(event.target.value)}
+        />
+        <button onClick={() => addTask(currentTask)}>Add</button>
       </div>
       <div>
         {
@@ -51,6 +68,9 @@ const App = () => {
       </div>
       <button onClick={deleteSelected}>
         Delete Tasks
+      </button>
+      <button onClick={cancelSelected}>
+        Cancel
       </button>
     </div>
   );
