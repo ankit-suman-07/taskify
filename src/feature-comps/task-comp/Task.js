@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Task.css";
 
 const Task = ({ name }) => {
     const [currentTask, setCurrentTask] = useState("");
@@ -41,7 +42,7 @@ const Task = ({ name }) => {
 
 
     return (
-        <div>
+        <div className="task-outer" >
             <div>
                 name: {name}
             </div>
