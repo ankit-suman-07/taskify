@@ -23,9 +23,14 @@ const App = () => {
     setTasks(tasks.filter(item => !item.selected));
   };
 
-  const cancelSelected = () => {
-    setTasks(tasks.map(item => { item.task = item.task, selected = false }));
+  const deleteOne = (taskToDelete) => {
+    setTasks(tasks.filter(task => task.task !== taskToDelete.task));
   };
+
+  const cancelSelected = () => {
+    setTasks(tasks.map(item => ({ task: item.task, selected: false })));
+  };
+
 
   const addTask = (currentTask) => {
     if (currentTask.trim() !== "") {
@@ -53,13 +58,15 @@ const App = () => {
           tasks && tasks.map((item, index) => {
             return (
               <div key={index} >
-                <button>
+                <button onClick={() => toggleSelected(item.task)}>
                   {
                     item.selected ? <span>Selected</span> : <span>Not</span>
                   }
                 </button>
                 {item.task}
-                <button onClick={() => toggleSelected(item.task)}>Toggle</button>
+                <button onClick={() => deleteOne(item)} >
+                  x
+                </button>
               </div>
             )
 
