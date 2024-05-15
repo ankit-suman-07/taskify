@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Task = () => {
+const Task = ({ name }) => {
     const [currentTask, setCurrentTask] = useState("");
     const [tasks, setTasks] = useState([
         { task: "Task 1", selected: false },
@@ -42,6 +42,9 @@ const Task = () => {
 
     return (
         <div>
+            <div>
+                name: {name}
+            </div>
             <div>
                 <input
                     type="text"
