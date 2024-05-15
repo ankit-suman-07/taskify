@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Task from '../task-comp/Task'
+import "./TaskGroup.css";
 
 const TaskGroup = () => {
     const [taskListName, setTaskListName] = useState(["mydem,o", "old school", "new tution"]);
-    const [showInput, setShowInput] = useState(true);
+    const [showInput, setShowInput] = useState(false);
     const [groupName, setGroupName] = useState("");
 
     const addGroup = (currentTask) => {
@@ -22,7 +23,7 @@ const TaskGroup = () => {
     };
 
     return (
-        <div>
+        <div className='task-group' >
             <button onClick={() => setShowInput(!showInput)} >
                 Add Group
             </button>
@@ -42,12 +43,12 @@ const TaskGroup = () => {
 
             {
                 taskListName.map((name) => {
-                    return <>
+                    return <div className='task-div' >
                         <button onClick={() => deleteOne(name)} >
                             Remove Lists
                         </button>
                         <Task name={name} />
-                    </>
+                    </div>
                 })
             }
         </div>

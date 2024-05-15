@@ -1,3 +1,6 @@
 .task-outer {
     border: 2px solid black;
 }
+.line-through {
+    text-decoration: line-through;
+}

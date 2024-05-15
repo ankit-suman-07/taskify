@@ -22,9 +22,8 @@ const App = () => {
       </div>
       {
         feature == "main" ? <Main />
-          : (feature == "task" ? <Task /> : <Notes />)
+          : (feature == "task" ? <TaskGroup /> : <Notes />)
       }
-      <TaskGroup />
       <footer>
         Footer
       </footer>

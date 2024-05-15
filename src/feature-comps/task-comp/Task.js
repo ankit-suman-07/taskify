@@ -3,12 +3,13 @@ import "./Task.css";
 
 const Task = ({ name }) => {
     const [currentTask, setCurrentTask] = useState("");
+    const [clicked, setClicked] = useState(false);
     const [tasks, setTasks] = useState([
-        { task: "Task 1", selected: false },
-        { task: "Snorkelling", selected: false },
-        { task: "Scuba Dive", selected: false },
-        { task: "Task 19", selected: false },
-        { task: "New Task", selected: false }
+        { task: "Task 1", selected: false, line: false },
+        { task: "Snorkelling", selected: false, line: false },
+        { task: "Scuba Dive", selected: false, line: false },
+        { task: "Task 19", selected: false, line: false },
+        { task: "New Task", selected: false, line: false }
     ]);
 
     const toggleSelected = (task) => {
@@ -22,20 +23,26 @@ const Task = ({ name }) => {
 
     const deleteSelected = () => {
         setTasks(tasks.filter(item => !item.selected));
+        setClicked(!clicked);
     };
 
     const deleteOne = (taskToDelete) => {
-        setTasks(tasks.filter(task => task.task !== taskToDelete.task));
+        setTasks(tasks.map(item => {
+            if (taskToDelete.task === item.task) {
+                return { ...item, line: true };
+            }
+            return item;
+        }));
     };
 
     const cancelSelected = () => {
-        setTasks(tasks.map(item => ({ task: item.task, selected: false })));
+        setTasks(tasks.map(item => ({ task: item.task, selected: false, line: item.line })));
     };
 
 
     const addTask = (currentTask) => {
         if (currentTask.trim() !== "") {
-            setTasks([...tasks, { task: currentTask, selected: false }]);
+            setTasks([...tasks, { task: currentTask, selected: false, line: false }]);
             setCurrentTask(""); // Optional: Clear the input field after adding a task
         }
     };
@@ -66,8 +73,11 @@ const Task = ({ name }) => {
                                         item.selected ? <span>Selected</span> : <span>Not</span>
                                     }
                                 </button>
-                                {item.task}
-                                <button onClick={() => deleteOne(item)} >
+                                <span className={item.line ? "line-through" : ""} >
+                                    {item.task}
+                                </span>
+
+                                <button onClick={() => deleteOne(item, index)} >
                                     x
                                 </button>
                             </div>
