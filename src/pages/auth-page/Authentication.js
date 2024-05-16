@@ -3,7 +3,16 @@ import "./Authentication.css";
 
 const Authentication = () => {
     return (
-        <div>Authentication</div>
+        <div className='authentication' >
+            <div className='auth-left' >
+                <div className='auth-logo' >
+                    Taskify
+                </div>
+            </div>
+            <div className='auth-right' >
+
+            </div>
+        </div>
     )
 }
 

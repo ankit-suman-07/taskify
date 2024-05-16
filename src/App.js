@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./App.css";
 import Home from './pages/home/Home';
 import Authentication from './pages/auth-page/Authentication';
 
@@ -8,7 +9,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div className='App' >
       {
         user
           ? <Home />
