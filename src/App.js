@@ -1,32 +1,19 @@
 import React, { useState } from 'react';
-import Task from './feature-comps/task-comp/Task';
-import Notes from './feature-comps/notes-comp/Notes';
-import Main from './components/main-page/Main';
-
-import TaskGroup from './feature-comps/task-group/TaskGroup';
+import Home from './pages/home/Home';
+import Authentication from './pages/auth-page/Authentication';
 
 const App = () => {
-  const [feature, setFeature] = useState("main");
+  const [user, setUser] = useState(false);
 
 
 
   return (
     <div>
-      <header>
-        Taskify
-      </header>
-      <div>
-        <button onClick={() => setFeature("main")} >Main</button>
-        <button onClick={() => setFeature("task")} >Task btn</button>
-        <button onClick={() => setFeature("notes")} >Notes btn</button>
-      </div>
       {
-        feature == "main" ? <Main />
-          : (feature == "task" ? <TaskGroup /> : <Notes />)
+        user
+          ? <Home />
+          : <Authentication />
       }
-      <footer>
-        Footer
-      </footer>
     </div>
   )
 }
