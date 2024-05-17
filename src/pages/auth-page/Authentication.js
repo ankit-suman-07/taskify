@@ -3,11 +3,14 @@ import "./Authentication.css";
 
 import SignIn from "./sign-in/SignIn";
 import SignUp from "./sign-up/SignUp";
+import GoogleSignIn from './google-signin/GoogleSignIn';
 
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Authentication = () => {
     const [signIn, setSignIn] = useState(true);
+
+
 
     return (
         <div className='authentication' >
@@ -30,9 +33,7 @@ const Authentication = () => {
                     }
                 </div>
                 {
-                    <button>
-                        Sign In using Google
-                    </button>
+                    <GoogleSignIn />
                 }
 
             </div>

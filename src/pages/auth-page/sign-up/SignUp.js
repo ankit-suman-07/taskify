@@ -6,51 +6,92 @@ import { useAuth } from '../../../context/authContext';
 const SignUp = () => {
     const { currentUser, loading } = useAuth();
 
-    const [email, setEmail] = useState(''); // Corrected useState
-    const [password, setPassword] = useState(''); // Corrected useState
-    const [isSigningIn, setIsSigningIn] = useState(false); // Corrected useState
-    const [errorMessage, setErrorMessage] = useState(''); // Corrected useState
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [isSigningIn, setIsSigningIn] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onSubmit = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            await doCreateUserWithEmailAndPassword(email, password);
+            setErrorMessage('');
+            try {
+                await doCreateUserWithEmailAndPassword(email, password);
+            } catch (error) {
+                setErrorMessage(error.message);
+            } finally {
+                setIsSigningIn(false);
+            }
         }
-    }
+    };
 
-    const onGoogleSignIn = (e) => {
-        e.preventDefault(); // Corrected preventDefault
+    const onGoogleSignIn = async (e) => {
+        e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            doSignInWithGoogle().catch(err => {
+            setErrorMessage('');
+            try {
+                await doSignInWithGoogle();
+            } catch (error) {
+                setErrorMessage(error.message);
+            } finally {
                 setIsSigningIn(false);
-            })
+            }
         }
-    }
+    };
 
-    // Function to handle email input change
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
-    }
+    };
 
-    // Function to handle password input change
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
-    }
+    };
 
     return (
-        <div>
-            SignUp
-            <form onSubmit={onSubmit} >
-                Email: <input type='email' value={email} onChange={handleEmailChange} placeholder="Enter Email ID" /> {/* Added value and onChange */}
-                Password: <input type='password' value={password} onChange={handlePasswordChange} placeholder='Enter Password' /> {/* Added value and onChange */}
-                <button type="submit" disabled={isSigningIn} >Sign In</button>
-            </form>
-            {/* Uncomment below if you want to enable Google sign in */}
-            {/* <button onClick={onGoogleSignIn}>Sign In with Google</button> */}
+        <div className='sign-up' >
+            <h2>Sign Up</h2>
+            {loading ? (
+                <p>Loading...</p>
+            ) : currentUser ? (
+                <p>You are already signed in as {currentUser.email}</p>
+            ) : (
+                <div>
+                    <form onSubmit={onSubmit}>
+                                <div>
+                                    <label>Email:</label>
+                                    <input
+                                        type='email'
+                                        value={email}
+                                        onChange={handleEmailChange}
+                                        placeholder="Enter Email ID"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label>Password:</label>
+                                    <input
+                                        type='password'
+                                        value={password}
+                                        onChange={handlePasswordChange}
+                                        placeholder='Enter Password'
+                                        required
+                                    />
+                                </div>
+                                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                                <button type="submit" disabled={isSigningIn}>
+                                    {isSigningIn ? 'Signing Up...' : 'Sign Up'}
+                                </button>
+                            </form>
+                            {/* Uncomment below if you want to enable Google sign-in */}
+                            {/* <button onClick={onGoogleSignIn} disabled={isSigningIn}>
+                        {isSigningIn ? 'Signing In...' : 'Sign In with Google'}
+                    </button> */}
+                        </div>
+            )}
         </div>
-    )
-}
+    );
+};
 
-export default SignUp
+export default SignUp;

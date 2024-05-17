@@ -4,7 +4,7 @@ import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../../fireb
 import { useAuth } from '../../../context/authContext';
 
 const SignIn = () => {
-    const { currentUser, loading } = useAuth();
+    const { currentUser, setCurrentUser, loading, handleSignOut } = useAuth();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +18,8 @@ const SignIn = () => {
             try {
                 const result = await doSignInWithEmailAndPassword(email, password);
                 console.log("Signed In : ", result.user.email);
+                setCurrentUser(result.user);
+                setIsSigningIn(false);
             } catch (error) {
                 setErrorMessage(error.message);
                 setIsSigningIn(false);
@@ -25,14 +27,19 @@ const SignIn = () => {
         }
     }
 
-    const onGoogleSignIn = (e) => {
+    const onGoogleSignIn = async (e) => {
         e.preventDefault();
         if (!isSigningIn) {
             setIsSigningIn(true);
-            doSignInWithGoogle().catch(err => {
-                setErrorMessage(err.message);
+            try {
+                const result = await doSignInWithGoogle();
+                setCurrentUser(result.user);
                 setIsSigningIn(false);
-            });
+                console.log(result.user);
+            } catch (error) {
+                setErrorMessage(error.message);
+                setIsSigningIn(false);
+            }
         }
     }
 
@@ -45,15 +52,13 @@ const SignIn = () => {
     }
 
     return (
-        <div>
-            {
-                loading
-            }
-            {loading ? (
+        <div className='sign-in' >
+            {loading || isSigningIn ? (
                 <p>Loading...</p>
             ) : currentUser ? (
                 <div>
                     <p>Welcome, {currentUser.email}!</p>
+                        <button onClick={handleSignOut}>Sign Out</button>
                 </div>
             ) : (
                 <div>
@@ -84,9 +89,9 @@ const SignIn = () => {
                             {isSigningIn ? 'Signing In...' : 'Sign In'}
                         </button>
                     </form>
-                            <button onClick={onGoogleSignIn} disabled={isSigningIn}>
+                            {/* <button onClick={onGoogleSignIn} disabled={isSigningIn}>
                                 {isSigningIn ? 'Signing In...' : 'Google Sign In'}
-                            </button>
+                            </button> */}
                         </div>
             )}
         </div>

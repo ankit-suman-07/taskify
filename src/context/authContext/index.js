@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { auth } from "../../firebase/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase/firebase"; // Ensure this path is correct
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 const AuthContext = React.createContext();
 
@@ -20,8 +20,8 @@ export function AuthProvider({ children }) {
 
     async function initializeUser(user) {
         if (user) {
-            setCurrentUser({ ...user });
-            setUserLoggedIn(false);
+            setCurrentUser(user);
+            setUserLoggedIn(true);
         } else {
             setCurrentUser(null);
             setUserLoggedIn(false);
@@ -29,14 +29,29 @@ export function AuthProvider({ children }) {
         setLoading(false);
     }
 
+    const handleSignOut = async () => {
+        setLoading(true);
+        try {
+            await signOut(auth);
+            setCurrentUser(null);
+            setUserLoggedIn(false);
+        } catch (error) {
+            console.error("Error signing out: ", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const value = {
         currentUser,
+        setCurrentUser,
         userLoggedIn,
-        loading
-    }
+        loading,
+        handleSignOut
+    };
 
     return (
-        <AuthContext.Provider value={{ value }} >
+        <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
     );
