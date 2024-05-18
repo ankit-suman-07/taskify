@@ -80,18 +80,39 @@
 .task-div {
     border: 2px solid red;
     background-color: rgba(255, 255, 255, 0.5);
-        margin-bottom: 10px;
+    margin-bottom: 10px;
         display: inline-block;
         width: 100%;
-    }
+        position: relative;
+        }
+        
+        .task-remove-btn {
+            border: 2px solid red;
+            margin: 5px;
+            position: absolute;
+            right: 0px;
+            height: 30px;
+            width: 30px;
+            background: none;
+            border: 2px solid #ffff;
+            border-radius: 50%;
+}
+                                .task-remove-btn:hover {
+                                    cursor: pointer;
+                                    transform: scale(1.1);
+                                    transition: all ease 0.3s;
+                                }
+                
+                                .task-remove-btn img {
+                                    width: 100%;
+                                }
     
     
-    
-    @media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
         .task-group {
             column-count: 3;
         }
-    }
+}
     
     @media screen and (max-width: 600px) {
         .task-group {

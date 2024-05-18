@@ -3,6 +3,7 @@ import Task from '../task-comp/Task'
 import "./TaskGroup.css";
 
 import AddIcon from "../../assets/addition.png";
+import DelIcon from "../../assets/remove.png";
 
 const TaskGroup = () => {
     const [taskListName, setTaskListName] = useState(["mydem,o", "old school", "new tution"]);
@@ -52,8 +53,8 @@ const TaskGroup = () => {
             {
                 taskListName.map((name) => {
                     return <div className='task-div' >
-                        <button onClick={() => deleteOne(name)} >
-                            Remove Lists
+                        <button onClick={() => deleteOne(name)} className='task-remove-btn' >
+                            <img src={DelIcon} alt='delete-icon' />
                         </button>
                         <Task name={name} />
                     </div>
