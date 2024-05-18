@@ -48,7 +48,7 @@ const GoogleSignIn = () => {
                                 <div className='google-icon' >
                                     <img src={GoogleIcon} alt='google-icon' />
                                 </div>
-                        {isSigningIn ? 'Signing In...' : 'Google Sign In'}
+                                {isSigningIn ? 'Signing In...' : 'Sign In using Google'}
                     </button>
                 </div>
             )}

@@ -70,15 +70,15 @@ const SignIn = () => {
             <form onSubmit={onSubmit} className='form' >
                 <div className='form-email' >
                     <label className='form-label' >Email:</label>
-                            <input
-                                type='email'
-                                value={email}
-                                onChange={handleEmailChange}
-                                placeholder="Enter Email ID"
-                                required
+                    <input
+                        type='email'
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="Enter Email ID"
+                        required
                         className='form-input-text'
-                            />
-                        </div>
+                    />
+                </div>
                 <div className='form-password' >
                     <label className='form-label' >Password:</label>
                     <div className='form-password-toggle' >
@@ -96,7 +96,7 @@ const SignIn = () => {
                     </div>
 
 
-                        </div>
+                </div>
                         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 <button type="submit" disabled={isSigningIn} className='form-sign-btn' >
                     {isSigningIn ? 'Signing In...' : 'Sign In'}
