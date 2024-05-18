@@ -1,7 +1,75 @@
 .authentication {
+    background-image: url('../../assets//landing-background.jpg');
+        background-size: cover;
+        background-position: center;
     height: 100vh;
     width: 100vw;
+    background-color: black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
 }
+    
 .auth-form-box {
     border: 2px solid black;
+    border-radius: 20px;
+    }
+    
+    
+    .auth-left {
+        /* border-right: 2px solid red; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .auth-logo {
+        margin-bottom: 30px;
+        color: #ffff;
+        font-size: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+    }
+    
+    .auth-logo-quote {
+        margin-bottom: 20px;
+        color: #ffff;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+    }
+    
+    .auth-right {
+        /* border: 2px solid blue; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .auth-right-form {
+        /* border: 2px solid green; */
+        border-radius: 10px;
+    
+        overflow: hidden;
+        background-color: rgba(255, 255, 255, .2);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    
+    .sign-toggle {
+        border: none;
+        background: none;
+        margin-bottom: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+    }
+    
+    .sign-toggle:hover {
+        cursor: pointer;
+        color: red;
 }

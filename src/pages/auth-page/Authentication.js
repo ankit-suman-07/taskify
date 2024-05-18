@@ -18,24 +18,31 @@ const Authentication = () => {
                 <div className='auth-logo' >
                     Taskify
                 </div>
+                <div className='auth-logo-quote' >
+                    All your writeups at one place.
+                </div>
             </div>
             <div className='auth-right' >
-                {
-                    signIn
-                        ? <button onClick={() => setSignIn(!signIn)} >Sign Up</button>
-                        : <button onClick={() => setSignIn(!signIn)} >Sign In</button>
-                }
-                <div className='auth-form-box' >
+                <div className='auth-right-form' >
+
+
+
+                    <div className='auth-form-box' >
                     {
                         signIn
                             ? <SignIn />
                             : <SignUp />
                     }
+                    </div>
+                    {
+                        <GoogleSignIn />
+                    }
+                    {
+                        signIn
+                            ? <button onClick={() => setSignIn(!signIn)} className='sign-toggle' >Not an Existing User? Sign Up</button>
+                            : <button onClick={() => setSignIn(!signIn)} className='sign-toggle' >Already a User? Sign In</button>
+                    }
                 </div>
-                {
-                    <GoogleSignIn />
-                }
-
             </div>
         </div>
     )

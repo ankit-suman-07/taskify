@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import "GoogleSignIn.css";
+import "./GoogleSignIn.css";
 import { doSignInWithGoogle } from '../../../firebase/auth';
 import { useAuth } from '../../../context/authContext';
+
+import GoogleIcon from "../../../assets/google.png";
 
 const GoogleSignIn = () => {
     const { currentUser, setCurrentUser, loading, handleSignOut } = useAuth();
@@ -42,7 +44,10 @@ const GoogleSignIn = () => {
 
                     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-                    <button onClick={onGoogleSignIn} disabled={isSigningIn}>
+                            <button onClick={onGoogleSignIn} disabled={isSigningIn} className='google-sign-btn' >
+                                <div className='google-icon' >
+                                    <img src={GoogleIcon} alt='google-icon' />
+                                </div>
                         {isSigningIn ? 'Signing In...' : 'Google Sign In'}
                     </button>
                 </div>
