@@ -16,7 +16,7 @@
     
 .auth-left {
         /* border-right: 2px solid red; */
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -48,6 +48,7 @@
     }
     
     .auth-right-form {
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
         /* border: 2px solid green; */
         border-radius: 10px;
     
@@ -72,4 +73,37 @@
     .sign-toggle:hover {
         cursor: pointer;
         color: red;
+}
+@media screen and (max-width: 700px) {
+    .authentication {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-left {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+
+
+    .auth-logo {
+        margin-top: 30px;
+    }
+
+
+    .auth-logo-quote {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        min-height: 60px;
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
 }

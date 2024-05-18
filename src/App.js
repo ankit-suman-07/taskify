@@ -12,7 +12,8 @@ const App = () => {
 
   return (
     <div>
-      <Authentication />
+      {/* <Authentication /> */}
+      <Home />
     </div>
 
     // <div className='App' >
