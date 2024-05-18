@@ -1,8 +1,132 @@
+.task-group-outer {
+    /* border: 2px solid green; */
+    /* background-color: rgba(255, 255, 255, 0.4); */
+    margin: 10px;
+}
+
+.task-group-add {
+    border: 2px solid #ffff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-feature {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #ffff;
+    margin-right: 10px;
+}
+
+.task-group-add-btn {
+    margin: 10px;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+}
+
+.task-group-add-btn:hover {
+    cursor: pointer;
+}
+
+.task-group-add-btn img {
+    height: 90%;
+    width: 90%;
+}
 .task-group {
-    border: 2px solid blue;
+    margin: 10px;
+        column-count: 4;
+    }
+    
+    .task-group-input {
+        padding: 3px;
+        height: 30px;
+        background-color: #ffff;
+        border-radius: 5px;
+    }
+    
+    .task-group-input input {
+        height: 90%;
+        border: none;
+        border-right: 2px solid black;
+    }
+    
+    
+    
+    .task-group-input button {
+        height: 100%;
+        width: 80px;
+        border: none;
+        background: none;
+        margin-left: 5px;
+        background-color: #ffff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+    }
+    
+    .task-group-input button:hover {
+        cursor: pointer;
 }
 
 .task-div {
     border: 2px solid red;
-    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 10px;
+        display: inline-block;
+        width: 100%;
+    }
+    
+    
+    
+    @media screen and (max-width: 800px) {
+        .task-group {
+            column-count: 3;
+        }
+    }
+    
+    @media screen and (max-width: 600px) {
+        .task-group {
+            column-count: 2;
+            border: 2px solid black;
+            margin: 10px 2px;
+        }
+    
+        .task-group-add {
+            margin: 0px;
+    
+        }
+    
+        .task-group-add-btn {
+            margin: 10px;
+            height: 30px;
+                width: 30px;
+            }
+            
+            .task-group-input {
+                padding: 3px;
+                height: 20px;
+            }
+            
+            .page-feature {
+                font-size: 14px;
+            }
+            
+            .task-group-input input {
+                font-size: 10px;
+                width: 100px;
+            }
+            
+            .task-group-input button {
+                font-size: 8px;
+                width: 42px;
+            }
 }

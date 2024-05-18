@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Task from '../task-comp/Task'
 import "./TaskGroup.css";
 
+import AddIcon from "../../assets/addition.png";
+
 const TaskGroup = () => {
     const [taskListName, setTaskListName] = useState(["mydem,o", "old school", "new tution"]);
     const [showInput, setShowInput] = useState(false);
@@ -12,8 +14,9 @@ const TaskGroup = () => {
             if (taskListName.some(group => group.toLowerCase() === currentTask.toLowerCase())) {
                 console.log("Already Exists");
             } else {
-                setTaskListName([...taskListName, currentTask]);
+                setTaskListName([currentTask, ...taskListName]);
                 setGroupName("");
+                setShowInput(!showInput);
             }
         }
     };
@@ -23,24 +26,29 @@ const TaskGroup = () => {
     };
 
     return (
-        <div className='task-group' >
-            <button onClick={() => setShowInput(!showInput)} >
-                Add Group
-            </button>
-            {
-                showInput
-                &&
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Enter Group Name"
-                        value={groupName}
-                        onChange={(event) => setGroupName(event.target.value)}
-                    />
-                    <button onClick={() => addGroup(groupName)}>Add Group</button>
+        <div className='task-group-outer' >
+            <div className='task-group-add' >
+                <button onClick={() => setShowInput(!showInput)} className='task-group-add-btn' >
+                    <img src={AddIcon} alt='add-icon' />
+                </button>
+                {
+                    showInput
+                    &&
+                    <div className='task-group-input' >
+                        <input
+                            type="text"
+                            placeholder="Enter Group Name"
+                            value={groupName}
+                            onChange={(event) => setGroupName(event.target.value)}
+                        />
+                        <button onClick={() => addGroup(groupName)}>Add Group</button>
+                    </div>
+                }
+                <div className='page-feature' >
+                    To-Dos'
                 </div>
-            }
-
+            </div>
+            <div className='task-group' >
             {
                 taskListName.map((name) => {
                     return <div className='task-div' >
@@ -50,7 +58,8 @@ const TaskGroup = () => {
                         <Task name={name} />
                     </div>
                 })
-            }
+                }
+            </div>
         </div>
     )
 }

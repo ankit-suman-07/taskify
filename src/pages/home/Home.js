@@ -25,7 +25,7 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div className='home' >
             <nav>
                 <Navbar />
             </nav>
@@ -53,16 +53,13 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            {/* {
-                feature == "main" ? <Main />
-                    : (feature == "task" ? <TaskGroup /> : <Notes />)
-            } */}
+
             {
                 components[feature]
             }
-            <footer>
+            {/* <footer>
                 Footer
-            </footer>
+            </footer> */}
         </div>
     )
 }
