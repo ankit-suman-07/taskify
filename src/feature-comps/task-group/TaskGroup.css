@@ -78,8 +78,9 @@
 }
 
 .task-div {
-    border: 2px solid red;
     background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+        overflow: hidden;
     margin-bottom: 10px;
         display: inline-block;
         width: 100%;
