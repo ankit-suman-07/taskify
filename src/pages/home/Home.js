@@ -5,6 +5,7 @@ import "./Home.css";
 import Task from '../../feature-comps/task-comp/Task';
 import Notes from '../../feature-comps/notes-comp/Notes';
 import Navbar from '../../components/navbar/Navbar';
+import NotesGroup from '../../feature-comps/notes-group/NotesGroup';
 
 import TaskGroup from '../../feature-comps/task-group/TaskGroup';
 import Main from "../../components/main-page/Main";
@@ -19,7 +20,7 @@ const Home = () => {
     const components = {
         "main": <Main />,
         "task": <TaskGroup />,
-        "notes": <Notes />,
+        "notes": <NotesGroup />,
         "docs": <Notes />
     }
 

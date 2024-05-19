@@ -1,0 +1,12 @@
+.notes-group {
+    color: white;
+    margin: 10px;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.note {
+    border: 2px solid white;
+}
