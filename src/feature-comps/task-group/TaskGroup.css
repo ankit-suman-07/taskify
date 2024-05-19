@@ -80,12 +80,13 @@
 .task-div {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
-        overflow: hidden;
+    overflow: hidden;
     margin-bottom: 10px;
-        display: inline-block;
+    display: inline-block;
         width: 100%;
         position: relative;
-        }
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
         
         .task-remove-btn {
             border: 2px solid red;
@@ -98,15 +99,16 @@
             border: 2px solid #ffff;
             border-radius: 50%;
 }
-                                .task-remove-btn:hover {
+
+.task-remove-btn:hover {
                                     cursor: pointer;
                                     transform: scale(1.1);
                                     transition: all ease 0.3s;
-                                }
+}
                 
-                                .task-remove-btn img {
+.task-remove-btn img {
                                     width: 100%;
-                                }
+}
     
     
 @media screen and (max-width: 800px) {
@@ -116,11 +118,15 @@
 }
     
     @media screen and (max-width: 600px) {
+        .task-group-outer {
+                /* border: 2px solid green; */
+                /* background-color: rgba(255, 255, 255, 0.4); */
+                margin: 2px;
+            }
         .task-group {
             column-count: 2;
-            border: 2px solid black;
-            margin: 10px 2px;
-        }
+            margin: 5px 2px;
+            }
     
         .task-group-add {
             margin: 0px;
@@ -151,4 +157,14 @@
                 font-size: 8px;
                 width: 42px;
             }
+.task-remove-btn {
+    margin: 5px;
+    height: 20px;
+    width: 20px;
+}
+
+.task-div {
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+}
 }

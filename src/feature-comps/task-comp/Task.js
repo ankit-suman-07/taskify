@@ -91,12 +91,15 @@ const Task = ({ name }) => {
                     })
                 }
             </div>
-            <button onClick={deleteSelected}>
-                Delete Tasks
-            </button>
-            <button onClick={cancelSelected}>
-                Cancel
-            </button>
+            <div className="task-bottom-btn" >
+                <button onClick={deleteSelected}>
+                    Delete Tasks
+                </button>
+                <button onClick={cancelSelected}>
+                    Cancel
+                </button>
+            </div>
+
         </div>
     );
 }
